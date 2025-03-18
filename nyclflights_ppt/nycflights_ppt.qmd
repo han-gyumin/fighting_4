@@ -3,9 +3,8 @@ title: "뉴욕 비행장 데이터 분석"
 author: "4조"
 format: 
     revealjs:
-        logo: fighting4zo.png
+        logo: team4_fighting_wide.png
         theme: moon
         reference-location: document  # 풋노트 뒤쪽으로 빼는 기능임
         footer: "fighting 4zo"
 ---
-

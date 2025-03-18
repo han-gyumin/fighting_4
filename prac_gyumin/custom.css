@@ -1,0 +1,25 @@
+.reveal h2 {
+  color: #ff6347; /* 토마토 레드 */
+  font-size: 2.2em;
+}
+
+/* footer 박스는 배경색 없이 고정만! */
+.reveal .footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* p 태그 자체에 스타일 적용! */
+.reveal .footer p {
+  display: inline;                 /* ✅ inline 요소로 변환 */
+  background-color: #444444;       /* ✅ 글자 주변 배경 */
+  color: #ffffff;                  /* ✅ 글자색 */
+  padding: 6px 12px;               /* ✅ 글자 주변 여백 */
+  border-radius: 5px;              /* ✅ 둥글게 처리 */
+  opacity: 0.9;                    /* ✅ 투명도 */
+}
+
+
+
