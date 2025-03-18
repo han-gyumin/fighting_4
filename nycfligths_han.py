@@ -118,10 +118,9 @@ total_seat_unique_sorted
 
 # ※ 기존에 구했던 것에서 중복 제거하는게 타당할 것 같아 위에 수식으로 갑니다! 이견 받음(규민이가..)
 
-# 6. 항공사별 비행기 타입 별 보유 개수
-# Fixed wing multi engine 젤 큰 비행기
-# Fixed wing single engine 그 다음으로 큰 비행기
-# Rotorcraft 젤 작은 비행기
-carrier_type = merge_df.groupby(['carrier', 'type'])['tailnum'].nunique().reset_index()
-carrier_type .rename(columns={'tailnum': 'plane_count'}, inplace=True)
-carrier_type 
+
+
+# 주제2. 규모가 큰 항공사는 지연률이 낮을까, 아니면 높을까?
+# 1. 각 항공사별 평균 지연 시간, 지연 편수 비율(정시운항 비율) 비교
+# 2. 항공사 규모에 따른 지연률 상관 또는 추세 살펴보기
+# 규모가 큰 항공사가 많은 자본으로 인력, 관리가 좋아 지연이 적을지, 아니면 반대로 규모때문에 관리가 더 어려워 지연이 잦을지 유추
