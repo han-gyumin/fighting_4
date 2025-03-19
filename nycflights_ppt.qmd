@@ -1,0 +1,12 @@
+---
+title: "nycflights13"
+subtitle : "항공사를 조사해 보아요"
+author: "4조"
+format: 
+    revealjs:
+        logo: fighting4zo.png
+        theme: moon
+        reference-location: document  
+        footer: "fighting 4zo"
+---
+
