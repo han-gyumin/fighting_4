@@ -1,11 +1,12 @@
 ---
-title: "뉴욕 비행장 데이터 분석"
+title: "nycflights13"
+subtitle : "항공사를 조사해 보아요"
 author: "4조"
 format: 
     revealjs:
         logo: fighting4zo.png
         theme: moon
-        reference-location: document  # 풋노트 뒤쪽으로 빼는 기능임
+        reference-location: document  
         footer: "fighting 4zo"
 ---
 
