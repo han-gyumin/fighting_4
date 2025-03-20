@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="cd_files/libs/revealjs/dist/theme/quarto-75ba9c4442ad3f424c7b83038f9a944d.css">
+  <link rel="stylesheet" href="cd_files/libs/revealjs/dist/theme/quarto-461a970f52c7dc04ef5f0d116de8bf02.css">
   <link href="cd_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="cd_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="cd_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -211,25 +211,30 @@
 </section>
 <section id="목차" class="slide level2">
 <h2>목차</h2>
+<div>
 <ol type="1">
-<li>목적 &amp; 배경</li>
-<li>5대 항공사 선정 과정
+<li class="fragment"><strong>목적 &amp; 배경</strong></li>
+<li class="fragment"><strong>5대 항공사 선정</strong>
 <ul>
-<li>3 개의 공항에서 모두 출발하는 항공사</li>
-<li>항공사별 운영 횟수</li>
-<li>항공사별 비행거리</li>
-<li>항공사별 보유 항공기 수</li>
-<li>항공사별 좌석 수</li>
+<li class="fragment">5대 항공사 선정 기준</li>
+<li class="fragment">데이터셋 소개</li>
+<li class="fragment">3 개의 공항에서 모두 출발하는 항공사</li>
+<li class="fragment">항공사별 운영 횟수</li>
+<li class="fragment">항공사별 비행거리</li>
+<li class="fragment">항공사별 보유 항공기 수</li>
+<li class="fragment">항공사별 좌석 수</li>
 </ul></li>
-<li>최적 항공사 추천 기준
+<li class="fragment"><strong>최적 항공사 추천</strong>
 <ul>
-<li>날짜 전처리</li>
-<li>항공사 분석 - 주중</li>
-<li>항공사 분석 - 주말</li>
-<li>주중/주말 시각화</li>
+<li class="fragment">추천 기준 &amp; 점수 산정 방식</li>
+<li class="fragment">날짜 전처리</li>
+<li class="fragment">항공사 분석 - 주중</li>
+<li class="fragment">항공사 분석 - 주말</li>
+<li class="fragment">결론 (시각화)</li>
 </ul></li>
-<li>결과</li>
+<li class="fragment"><strong>조원 및 업무 분담</strong></li>
 </ol>
+</div>
 </section>
 <section>
 <section id="목적-배경" class="title-slide slide level1 center">
@@ -239,9 +244,24 @@
 <section id="목적-배경-1" class="slide level2">
 <h2>목적 &amp; 배경</h2>
 <ul>
-<li><p>자사(위치: 뉴욕)을 방문한 클라이언트들에게 <strong>각자의 공항으로 돌아가는 최적의 항공사 추천</strong>을 위함</p></li>
-<li><p>항공사마다 운항 빈도, 비행 거리, 정시 운항률, 지연 시간과 같은 요소가 달라 종합적인 최적의 항공사 선택이 필요</p></li>
+<li>자사(위치: 뉴욕)를 방문한 클라이언트들에게 <strong>각자의 공항으로 돌아가는 최적의 항공사 추천</strong>을 위함</li>
 </ul>
+<p><br></p>
+<ul>
+<li>항공사마다 운항 빈도, 비행 거리, 정시 운항률, 지연 시간과 같은 요소가 달라 <strong>종합적인 최적의 항공사</strong> 선택 필요</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>클라이언트별 니즈</strong>를 고려하여 <strong>항공사 선정 기준 세분화</strong> 필요</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="대-항공사-선정" class="title-slide slide level1 center">
+<h1>5대 항공사 선정</h1>
+
 </section>
 <section id="대-항공사-선정-기준" class="slide level2">
 <h2>5대 항공사 선정 기준</h2>
@@ -253,38 +273,107 @@
 <ul>
 <li>운영 횟수 &amp; 운영 거리</li>
 <li>보유 항공기 수</li>
-<li>좌석 수 <img data-src="ditance.png" class="absolute" style="bottom: 0px; right: 10px; width: 450px; height: 450px; "> <img data-src="planes.png" class="absolute" style="bottom: 0px; right: 520px; width: 450px; height: 450px; "> <img data-src="runtime.png" class="absolute" style="bottom: 0px; right: 1030px; width: 450px; height: 450px; "> <img data-src="seat.png" class="absolute" style="bottom: 11px; right: 1540px; width: 450px; height: 450px; "></li>
+<li>좌석 수 <img data-src="seat.png" class="absolute" style="bottom: 0px; right: 10px; width: 450px; height: 450px; "> <img data-src="planes.png" class="absolute" style="bottom: 0px; right: 520px; width: 450px; height: 450px; "> <img data-src="ditance.png" class="absolute" style="bottom: 0px; right: 1030px; width: 450px; height: 450px; "> <img data-src="runtime.png" class="absolute" style="bottom: 11px; right: 1540px; width: 450px; height: 450px; "></li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
 <section class="slide level2">
 
+<h3 id="데이터셋-소개">데이터셋 소개</h3>
+<div id="ad800baf" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>merge_df <span class="op">=</span> pd.merge(flights, planes, on<span class="op">=</span><span class="st">'tailnum'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb1-2"><a href=""></a><span class="bu">print</span>(merge_df.head(<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   year_x  month  day  dep_time  sched_dep_time  dep_delay  arr_time  \
+0    2013      1    1     517.0             515        2.0     830.0   
+1    2013      1    1     533.0             529        4.0     850.0   
+
+   sched_arr_time  arr_delay carrier  flight tailnum origin dest  air_time  \
+0             819       11.0      UA    1545  N14228    EWR  IAH     227.0   
+1             830       20.0      UA    1714  N24211    LGA  IAH     227.0   
+
+   distance  hour  minute             time_hour  year_y  \
+0      1400     5      15  2013-01-01T10:00:00Z  1999.0   
+1      1416     5      29  2013-01-01T10:00:00Z  1998.0   
+
+                      type manufacturer    model  engines  seats  speed  \
+0  Fixed wing multi engine       BOEING  737-824      2.0  149.0    NaN   
+1  Fixed wing multi engine       BOEING  737-824      2.0  149.0    NaN   
+
+      engine  
+0  Turbo-fan  
+1  Turbo-fan  </code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="fragment" style="display: flex; justify-content: flex-start;">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td><strong>year_x, month, day</strong></td>
+<td>항공기 출발 날짜(년, 월, 일)</td>
+</tr>
+<tr class="even">
+<td><strong>dep_delay</strong></td>
+<td>출발 지연 시간</td>
+</tr>
+<tr class="odd">
+<td><strong>carrier</strong></td>
+<td>항공사명</td>
+</tr>
+<tr class="even">
+<td><strong>tailnum</strong></td>
+<td>항공기 등록 코드</td>
+</tr>
+<tr class="odd">
+<td><strong>origin</strong></td>
+<td>출발 공항</td>
+</tr>
+<tr class="even">
+<td><strong>dest</strong></td>
+<td>도착 공항</td>
+</tr>
+<tr class="odd">
+<td><strong>distance</strong></td>
+<td>비행 거리</td>
+</tr>
+<tr class="even">
+<td><strong>seats</strong></td>
+<td>좌석 수</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide level2">
+
 <h3 id="개의-공항에서-모두-출발하는-항공사">1. 3개의 공항에서 모두 출발하는 항공사</h3>
-<div id="e9884d69" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>carrier_airport_count <span class="op">=</span> merge_df.groupby(<span class="st">'carrier'</span>)[<span class="st">'origin'</span>] <span class="op">\</span></span>
-<span id="cb1-2"><a href=""></a>    .nunique() <span class="op">\</span></span>
-<span id="cb1-3"><a href=""></a>    .reset_index() <span class="op">\</span></span>
-<span id="cb1-4"><a href=""></a>    .rename(columns<span class="op">=</span>{<span class="st">'origin'</span>: <span class="st">'airport_count'</span>})</span>
-<span id="cb1-5"><a href=""></a>carrier_airport_count.loc[carrier_airport_count[<span class="st">'airport_count'</span>]<span class="op">==</span><span class="dv">3</span>, :]</span>
-<span id="cb1-6"><a href=""></a><span class="bu">print</span>(carrier_airport_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0112b29c" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>carrier_airport_count <span class="op">=</span> merge_df.groupby(<span class="st">'carrier'</span>)[<span class="st">'origin'</span>] <span class="op">\</span></span>
+<span id="cb3-2"><a href=""></a>    .nunique() <span class="op">\</span></span>
+<span id="cb3-3"><a href=""></a>    .reset_index() <span class="op">\</span></span>
+<span id="cb3-4"><a href=""></a>    .rename(columns<span class="op">=</span>{<span class="st">'origin'</span>: <span class="st">'airport_count'</span>})</span>
+<span id="cb3-5"><a href=""></a>carrier_airport_count.loc[carrier_airport_count[<span class="st">'airport_count'</span>]<span class="op">==</span><span class="dv">3</span>, :]</span>
+<span id="cb3-6"><a href=""></a>carrier_airport_count_sorted<span class="op">=</span>carrier_airport_count.sort_values(by<span class="op">=</span><span class="st">'airport_count'</span>, ascending<span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb3-7"><a href=""></a><span class="bu">print</span>(carrier_airport_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier  airport_count
 0       9E              3
 1       AA              3
-2       AS              1
 3       B6              3
 4       DL              3
 5       EV              3
-6       F9              1
-7       FL              1
-8       HA              1
-9       MQ              3
-10      OO              2
-11      UA              3
 12      US              3
-13      VX              2
+11      UA              3
+9       MQ              3
 14      WN              2
+13      VX              2
+10      OO              2
+2       AS              1
+7       FL              1
+6       F9              1
+8       HA              1
 15      YV              1</code></pre>
 </div>
 </div>
@@ -292,42 +381,43 @@
 <section class="slide level2">
 
 <h3 id="항공사별-운영-횟수">2. 항공사별 운영 횟수</h3>
-<div id="a30f456d" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>carrier_total_count <span class="op">=</span> merge_df.pivot_table(</span>
-<span id="cb3-2"><a href=""></a>    index<span class="op">=</span><span class="st">'carrier'</span>,</span>
-<span id="cb3-3"><a href=""></a>    values<span class="op">=</span><span class="st">'year_x'</span>,</span>
-<span id="cb3-4"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">'count'</span></span>
-<span id="cb3-5"><a href=""></a>).reset_index()</span>
-<span id="cb3-6"><a href=""></a>carrier_total_count.sort_values(by<span class="op">=</span><span class="st">'year_x'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-7"><a href=""></a><span class="bu">print</span>(carrier_total_count.sort_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e52341ac" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>carrier_total_count <span class="op">=</span> merge_df.pivot_table(</span>
+<span id="cb5-2"><a href=""></a>    index<span class="op">=</span><span class="st">'carrier'</span>,</span>
+<span id="cb5-3"><a href=""></a>    values<span class="op">=</span><span class="st">'year_x'</span>,</span>
+<span id="cb5-4"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">'count'</span></span>
+<span id="cb5-5"><a href=""></a>).reset_index()</span>
+<span id="cb5-6"><a href=""></a>carrier_total_count.sort_values(by<span class="op">=</span><span class="st">'year_x'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-7"><a href=""></a>carrier_total_count_sorted <span class="op">=</span> carrier_total_count.sort_values(by<span class="op">=</span><span class="st">'year_x'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-8"><a href=""></a><span class="bu">print</span>(carrier_total_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;bound method DataFrame.sort_values of    carrier  year_x
-0       9E   18460
-1       AA   32729
-2       AS     714
-3       B6   54635
-4       DL   48110
-5       EV   54173
-6       F9     685
-7       FL    3260
-8       HA     342
-9       MQ   26397
-10      OO      32
+<pre><code>   carrier  year_x
 11      UA   58665
+3       B6   54635
+5       EV   54173
+4       DL   48110
+1       AA   32729
+9       MQ   26397
 12      US   20536
-13      VX    5162
+0       9E   18460
 14      WN   12275
-15      YV     601&gt;</code></pre>
+13      VX    5162
+7       FL    3260
+2       AS     714
+6       F9     685
+15      YV     601
+8       HA     342
+10      OO      32</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="항공사별-비행-거리">3. 항공사별 비행 거리</h3>
-<div id="c184193d" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>total_distance <span class="op">=</span> merge_df.groupby(<span class="st">'carrier'</span>)[<span class="st">'distance'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb5-2"><a href=""></a>total_distance_sorted <span class="op">=</span> total_distance.sort_values(by<span class="op">=</span><span class="st">"distance"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb5-3"><a href=""></a><span class="bu">print</span>(total_distance_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bcb24347" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>total_distance <span class="op">=</span> merge_df.groupby(<span class="st">'carrier'</span>)[<span class="st">'distance'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb7-2"><a href=""></a>total_distance_sorted <span class="op">=</span> total_distance.sort_values(by<span class="op">=</span><span class="st">"distance"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-3"><a href=""></a><span class="bu">print</span>(total_distance_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier  distance
 11      UA  89705524
@@ -352,42 +442,43 @@
 <section class="slide level2">
 
 <h3 id="항공사별-보유-항공기-수">4. 항공사별 보유 항공기 수</h3>
-<div id="b26928f1" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>table_sort <span class="op">=</span> merge_df.pivot_table(</span>
-<span id="cb7-2"><a href=""></a>    index<span class="op">=</span><span class="st">'carrier'</span>, </span>
-<span id="cb7-3"><a href=""></a>    values<span class="op">=</span><span class="st">'tailnum'</span>,</span>
-<span id="cb7-4"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">'nunique'</span></span>
-<span id="cb7-5"><a href=""></a>).reset_index()</span>
-<span id="cb7-6"><a href=""></a><span class="bu">print</span>(table_sort)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fbce0758" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>plane_count <span class="op">=</span> merge_df.pivot_table(</span>
+<span id="cb9-2"><a href=""></a>    index<span class="op">=</span><span class="st">'carrier'</span>, </span>
+<span id="cb9-3"><a href=""></a>    values<span class="op">=</span><span class="st">'tailnum'</span>,</span>
+<span id="cb9-4"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">'nunique'</span></span>
+<span id="cb9-5"><a href=""></a>).reset_index()</span>
+<span id="cb9-6"><a href=""></a>plane_count_sorted<span class="op">=</span> plane_count.sort_values(by<span class="op">=</span><span class="st">'tailnum'</span> , ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-7"><a href=""></a><span class="bu">print</span>(plane_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier  tailnum
-0       9E      203
-1       AA      600
-2       AS       84
-3       B6      193
 4       DL      629
-5       EV      316
-6       F9       25
-7       FL      129
-8       HA       14
-9       MQ      237
-10      OO       28
 11      UA      620
-12      US      289
-13      VX       53
+1       AA      600
 14      WN      582
-15      YV       58</code></pre>
+5       EV      316
+12      US      289
+9       MQ      237
+0       9E      203
+3       B6      193
+7       FL      129
+2       AS       84
+15      YV       58
+13      VX       53
+10      OO       28
+6       F9       25
+8       HA       14</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="항공사별-좌석-수">5. 항공사별 좌석 수</h3>
-<div id="6fcdeedb" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>unique_planes <span class="op">=</span> merge_df[[<span class="st">'carrier'</span>, <span class="st">'tailnum'</span>, <span class="st">'seats'</span>]].drop_duplicates()</span>
-<span id="cb9-2"><a href=""></a>total_seat_unique <span class="op">=</span> unique_planes.groupby(<span class="st">'carrier'</span>)[<span class="st">'seats'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb9-3"><a href=""></a>total_seat_unique_sorted <span class="op">=</span> total_seat_unique.sort_values(by<span class="op">=</span><span class="st">'seats'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb9-4"><a href=""></a><span class="bu">print</span>(total_seat_unique_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5615c87c" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>unique_planes <span class="op">=</span> merge_df[[<span class="st">'carrier'</span>, <span class="st">'tailnum'</span>, <span class="st">'seats'</span>]].drop_duplicates()</span>
+<span id="cb11-2"><a href=""></a>total_seat_unique <span class="op">=</span> unique_planes.groupby(<span class="st">'carrier'</span>)[<span class="st">'seats'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb11-3"><a href=""></a>total_seat_unique_sorted <span class="op">=</span> total_seat_unique.sort_values(by<span class="op">=</span><span class="st">'seats'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-4"><a href=""></a><span class="bu">print</span>(total_seat_unique_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier     seats
 11      UA  116252.0
@@ -412,11 +503,11 @@
 <section class="slide level2">
 
 <h3 id="종합---5대-항공사-선정">종합 - 5대 항공사 선정</h3>
-<div id="efa3d035" class="cell" data-execution_count="7">
+<div id="bdb5c63d" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="cd_files/figure-revealjs/cell-8-output-1.png" width="1623" height="951"></p>
+<p><img data-src="cd_files/figure-revealjs/cell-9-output-1.png" width="1623" height="951"></p>
 </figure>
 </div>
 </div>
@@ -424,8 +515,8 @@
 <!-- # 주제2. 주중과 주말 각각 따로 추천할 항공사 찾기 (최댓값 정규화 적용) -->
 </section></section>
 <section>
-<section id="최적-항공사-추천-기준" class="title-slide slide level1 center">
-<h1>최적 항공사 추천 기준</h1>
+<section id="최적-항공사-추천" class="title-slide slide level1 center">
+<h1>최적 항공사 추천</h1>
 
 </section>
 <section id="추천-기준-점수-산정-방식" class="slide level2">
@@ -474,43 +565,43 @@
 </section>
 <section id="날짜-전처리" class="slide level2">
 <h2>날짜 전처리</h2>
-<div id="eaacf091" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="co"># 상위 5개 항공사 필터링</span></span>
-<span id="cb11-2"><a href=""></a>top_carrier <span class="op">=</span> [<span class="st">'UA'</span>, <span class="st">'AA'</span>, <span class="st">'B6'</span>, <span class="st">'DL'</span>, <span class="st">'EV'</span>]</span>
-<span id="cb11-3"><a href=""></a></span>
-<span id="cb11-4"><a href=""></a><span class="co"># year 칼럼명 정리 - 날짜 전처리 위해</span></span>
-<span id="cb11-5"><a href=""></a>merge_df <span class="op">=</span> merge_df.rename(columns<span class="op">=</span>{</span>
-<span id="cb11-6"><a href=""></a>    <span class="st">'year_x'</span>: <span class="st">'year'</span>,               <span class="co"># year_x → year (기본 연도)</span></span>
-<span id="cb11-7"><a href=""></a>    <span class="st">'year_y'</span>: <span class="st">'year_manufactured'</span>,  <span class="co"># year_y → year_manufactured (제조 연도)</span></span>
-<span id="cb11-8"><a href=""></a>})</span>
-<span id="cb11-9"><a href=""></a></span>
-<span id="cb11-10"><a href=""></a><span class="co"># 날짜 전처리 - date 칼럼 추가</span></span>
-<span id="cb11-11"><a href=""></a>merge_df[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(merge_df[[<span class="st">'year'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>]])</span>
-<span id="cb11-12"><a href=""></a><span class="co"># 요일 칼럼 추가</span></span>
-<span id="cb11-13"><a href=""></a>merge_df[<span class="st">'weekday'</span>] <span class="op">=</span> merge_df[<span class="st">'date'</span>].dt.day_name()</span>
-<span id="cb11-14"><a href=""></a></span>
-<span id="cb11-15"><a href=""></a>weekday_list <span class="op">=</span> [<span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, <span class="st">"Thursday"</span>]</span>
-<span id="cb11-16"><a href=""></a>weekend_list <span class="op">=</span> [<span class="st">"Friday"</span>, <span class="st">"Saturday"</span>, <span class="st">"Sunday"</span>]</span>
-<span id="cb11-17"><a href=""></a></span>
-<span id="cb11-18"><a href=""></a><span class="kw">def</span> week_group(weekday): <span class="co"># 주중, 주말 구분 함수</span></span>
-<span id="cb11-19"><a href=""></a>    <span class="cf">if</span> weekday <span class="kw">in</span> weekday_list:</span>
-<span id="cb11-20"><a href=""></a>        <span class="cf">return</span> <span class="st">"Weekday"</span></span>
-<span id="cb11-21"><a href=""></a>    <span class="cf">else</span>:</span>
-<span id="cb11-22"><a href=""></a>        <span class="cf">return</span> <span class="st">"Weekend"</span></span>
-<span id="cb11-23"><a href=""></a></span>
-<span id="cb11-24"><a href=""></a>merge_df[<span class="st">'week_group'</span>] <span class="op">=</span> merge_df[<span class="st">'weekday'</span>].<span class="bu">apply</span>(week_group) <span class="co"># 주중, 주말 칼럼 추가</span></span>
-<span id="cb11-25"><a href=""></a></span>
-<span id="cb11-26"><a href=""></a><span class="co"># 상위 5개 항공사 데이터 필터링</span></span>
-<span id="cb11-27"><a href=""></a>top5_df <span class="op">=</span> merge_df[merge_df[<span class="st">'carrier'</span>].isin(top_carrier)]</span>
-<span id="cb11-28"><a href=""></a></span>
-<span id="cb11-29"><a href=""></a><span class="co"># 주중, 주말 데이터 분리</span></span>
-<span id="cb11-30"><a href=""></a>weekday_df <span class="op">=</span> top5_df[top5_df[<span class="st">'week_group'</span>] <span class="op">==</span> <span class="st">'Weekday'</span>]</span>
-<span id="cb11-31"><a href=""></a>weekend_df <span class="op">=</span> top5_df[top5_df[<span class="st">'week_group'</span>] <span class="op">==</span> <span class="st">'Weekend'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c3b91165" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="co"># 상위 5개 항공사 필터링</span></span>
+<span id="cb13-2"><a href=""></a>top_carrier <span class="op">=</span> [<span class="st">'UA'</span>, <span class="st">'AA'</span>, <span class="st">'B6'</span>, <span class="st">'DL'</span>, <span class="st">'EV'</span>]</span>
+<span id="cb13-3"><a href=""></a></span>
+<span id="cb13-4"><a href=""></a><span class="co"># year 칼럼명 정리 - 날짜 전처리 위해</span></span>
+<span id="cb13-5"><a href=""></a>merge_df <span class="op">=</span> merge_df.rename(columns<span class="op">=</span>{</span>
+<span id="cb13-6"><a href=""></a>    <span class="st">'year_x'</span>: <span class="st">'year'</span>,               <span class="co"># year_x → year (기본 연도)</span></span>
+<span id="cb13-7"><a href=""></a>    <span class="st">'year_y'</span>: <span class="st">'year_manufactured'</span>,  <span class="co"># year_y → year_manufactured (제조 연도)</span></span>
+<span id="cb13-8"><a href=""></a>})</span>
+<span id="cb13-9"><a href=""></a></span>
+<span id="cb13-10"><a href=""></a><span class="co"># 날짜 전처리 - date 칼럼 추가</span></span>
+<span id="cb13-11"><a href=""></a>merge_df[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(merge_df[[<span class="st">'year'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>]])</span>
+<span id="cb13-12"><a href=""></a><span class="co"># 요일 칼럼 추가</span></span>
+<span id="cb13-13"><a href=""></a>merge_df[<span class="st">'weekday'</span>] <span class="op">=</span> merge_df[<span class="st">'date'</span>].dt.day_name()</span>
+<span id="cb13-14"><a href=""></a></span>
+<span id="cb13-15"><a href=""></a>weekday_list <span class="op">=</span> [<span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, <span class="st">"Thursday"</span>]</span>
+<span id="cb13-16"><a href=""></a>weekend_list <span class="op">=</span> [<span class="st">"Friday"</span>, <span class="st">"Saturday"</span>, <span class="st">"Sunday"</span>]</span>
+<span id="cb13-17"><a href=""></a></span>
+<span id="cb13-18"><a href=""></a><span class="kw">def</span> week_group(weekday): <span class="co"># 주중, 주말 구분 함수</span></span>
+<span id="cb13-19"><a href=""></a>    <span class="cf">if</span> weekday <span class="kw">in</span> weekday_list:</span>
+<span id="cb13-20"><a href=""></a>        <span class="cf">return</span> <span class="st">"Weekday"</span></span>
+<span id="cb13-21"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb13-22"><a href=""></a>        <span class="cf">return</span> <span class="st">"Weekend"</span></span>
+<span id="cb13-23"><a href=""></a></span>
+<span id="cb13-24"><a href=""></a>merge_df[<span class="st">'week_group'</span>] <span class="op">=</span> merge_df[<span class="st">'weekday'</span>].<span class="bu">apply</span>(week_group) <span class="co"># 주중, 주말 칼럼 추가</span></span>
+<span id="cb13-25"><a href=""></a></span>
+<span id="cb13-26"><a href=""></a><span class="co"># 상위 5개 항공사 데이터 필터링</span></span>
+<span id="cb13-27"><a href=""></a>top5_df <span class="op">=</span> merge_df[merge_df[<span class="st">'carrier'</span>].isin(top_carrier)]</span>
+<span id="cb13-28"><a href=""></a></span>
+<span id="cb13-29"><a href=""></a><span class="co"># 주중, 주말 데이터 분리</span></span>
+<span id="cb13-30"><a href=""></a>weekday_df <span class="op">=</span> top5_df[top5_df[<span class="st">'week_group'</span>] <span class="op">==</span> <span class="st">'Weekday'</span>]</span>
+<span id="cb13-31"><a href=""></a>weekend_df <span class="op">=</span> top5_df[top5_df[<span class="st">'week_group'</span>] <span class="op">==</span> <span class="st">'Weekend'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="항공사-분석---주중" class="slide level2">
 <h2>항공사 분석 - 주중</h2>
-<div id="9c5655e7" class="cell" data-execution_count="9">
+<div id="492a12fa" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>  carrier  weekday_flights  flight_norm  dest_count  dest_norm  avg_delay  \
 0      UA            35474         1.00          38       0.68  12.073676   
@@ -528,6 +619,7 @@
 </div>
 </div>
 <p><br></p>
+<div class="fragment" style="display: flex; justify-content: flex-start;">
 <table class="caption-top">
 <tbody>
 <tr class="odd">
@@ -544,7 +636,7 @@
 </tr>
 <tr class="even">
 <td><strong>ontime_ratio</strong></td>
-<td>정시 운항 비율(정시= +-5)</td>
+<td>정시 운항 비율(정시에서 ±5분 이내)</td>
 </tr>
 <tr class="odd">
 <td><strong>total_norm</strong></td>
@@ -556,10 +648,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="항공사-분석---주말" class="slide level2">
 <h2>항공사 분석 - 주말</h2>
-<div id="02353858" class="cell" data-execution_count="10">
+<div id="3f145b14" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>  carrier  weekend_flights  flight_norm  dest_count  dest_norm  avg_delay  \
 3      DL            19845         0.85          36       0.60   8.197528   
@@ -577,6 +670,7 @@
 </div>
 </div>
 <p><br></p>
+<div class="fragment" style="display: flex; justify-content: flex-start;">
 <table class="caption-top">
 <tbody>
 <tr class="odd">
@@ -593,7 +687,7 @@
 </tr>
 <tr class="even">
 <td><strong>ontime_ratio</strong></td>
-<td>정시 운항 비율(정시= +-5)</td>
+<td>정시 운항 비율(정시에서 ±5분 이내)</td>
 </tr>
 <tr class="odd">
 <td><strong>total_norm</strong></td>
@@ -605,6 +699,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="결론" class="slide level2">
 <h2>결론</h2>
@@ -612,105 +707,110 @@
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">스택 막대 그래프</a></li><li><a href="#tabset-1-2">레이더 차트</a></li><li><a href="#tabset-1-3">레이더 차트 코드</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="77938b54" class="cell" data-execution_count="11">
+<div id="12bb7859" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="cd_files/figure-revealjs/cell-12-output-1.png" width="1335" height="758"></p>
+<p><img data-src="cd_files/figure-revealjs/cell-13-output-1.png" width="1431" height="758"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="55511238" class="cell" data-execution_count="12">
+<div id="a3230b45" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="cd_files/figure-revealjs/cell-13-output-1.png" width="1396" height="672"></p>
+<p><img data-src="cd_files/figure-revealjs/cell-14-output-1.png" width="1403" height="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-1-3">
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="co"># 주중/주말 레이더 차트</span></span>
-<span id="cb14-2"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">7</span>)) </span>
-<span id="cb14-3"><a href=""></a></span>
-<span id="cb14-4"><a href=""></a><span class="co"># 주중 레이더 차트</span></span>
-<span id="cb14-5"><a href=""></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, polar<span class="op">=</span><span class="va">True</span>)  <span class="co"># 극좌표(polar): 그래프 생성</span></span>
-<span id="cb14-6"><a href=""></a>categories <span class="op">=</span> section_names </span>
-<span id="cb14-7"><a href=""></a>N <span class="op">=</span> <span class="bu">len</span>(categories)</span>
-<span id="cb14-8"><a href=""></a></span>
-<span id="cb14-9"><a href=""></a><span class="co"># 각도 계산</span></span>
-<span id="cb14-10"><a href=""></a>angles <span class="op">=</span> [n <span class="op">/</span> <span class="bu">float</span>(N) <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N)]</span>
-<span id="cb14-11"><a href=""></a>angles <span class="op">+=</span> angles[:<span class="dv">1</span>]  <span class="co"># 닫힌 다각형을 위해 처음 값 반복</span></span>
-<span id="cb14-12"><a href=""></a></span>
-<span id="cb14-13"><a href=""></a><span class="co"># x축 라벨 설정</span></span>
-<span id="cb14-14"><a href=""></a>plt.xticks(angles[:<span class="op">-</span><span class="dv">1</span>], categories, size<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb14-15"><a href=""></a></span>
-<span id="cb14-16"><a href=""></a></span>
-<span id="cb14-17"><a href=""></a><span class="co"># y축 범위 설정</span></span>
-<span id="cb14-18"><a href=""></a>plt.ylim(<span class="dv">0</span>, <span class="dv">1</span>)    <span class="co"># 최댓값 정규화 결과는 0~1 사이. 제일 끝이 1</span></span>
-<span id="cb14-19"><a href=""></a></span>
-<span id="cb14-20"><a href=""></a><span class="co"># 각 항공사별 색상 -&gt; 레이더 차트 선</span></span>
-<span id="cb14-21"><a href=""></a>carrier_colors <span class="op">=</span> {</span>
-<span id="cb14-22"><a href=""></a>    <span class="st">'UA'</span>: <span class="st">'royalblue'</span>,</span>
-<span id="cb14-23"><a href=""></a>    <span class="st">'AA'</span>: <span class="st">'tomato'</span>,</span>
-<span id="cb14-24"><a href=""></a>    <span class="st">'B6'</span>: <span class="st">'forestgreen'</span>,</span>
-<span id="cb14-25"><a href=""></a>    <span class="st">'DL'</span>: <span class="st">'purple'</span>,</span>
-<span id="cb14-26"><a href=""></a>    <span class="st">'EV'</span>: <span class="st">'orange'</span></span>
-<span id="cb14-27"><a href=""></a>}</span>
-<span id="cb14-28"><a href=""></a></span>
-<span id="cb14-29"><a href=""></a><span class="co"># 각 항공사에 대한 레이더 차트 그리기</span></span>
-<span id="cb14-30"><a href=""></a><span class="cf">for</span> i, row <span class="kw">in</span> weekday_ranking.iterrows():</span>
-<span id="cb14-31"><a href=""></a>    carrier <span class="op">=</span> row[<span class="st">'carrier'</span>]</span>
-<span id="cb14-32"><a href=""></a>    values <span class="op">=</span> [row[<span class="st">'flight_norm'</span>], row[<span class="st">'dest_norm'</span>], row[<span class="st">'delay_norm'</span>], row[<span class="st">'ontime_norm'</span>]]</span>
-<span id="cb14-33"><a href=""></a>    values <span class="op">+=</span> values[:<span class="dv">1</span>]    <span class="co"># 닫힌 다각형을 위해 처음 값 반복</span></span>
-<span id="cb14-34"><a href=""></a>    </span>
-<span id="cb14-35"><a href=""></a>    <span class="co"># 선 그리기</span></span>
-<span id="cb14-36"><a href=""></a>    plt.plot(angles, values, linewidth<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'solid'</span>, color<span class="op">=</span>carrier_colors[carrier], label<span class="op">=</span>carrier)</span>
-<span id="cb14-37"><a href=""></a>    <span class="co"># 영역 채우기</span></span>
-<span id="cb14-38"><a href=""></a>    plt.fill(angles, values, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span>carrier_colors[carrier])</span>
-<span id="cb14-39"><a href=""></a></span>
-<span id="cb14-40"><a href=""></a>plt.title(<span class="st">'주중 항공사 부문별 정규화 점수'</span>, pad<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb14-41"><a href=""></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb14-42"><a href=""></a></span>
-<span id="cb14-43"><a href=""></a><span class="co"># 주말 레이더 차트</span></span>
-<span id="cb14-44"><a href=""></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, polar<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb14-45"><a href=""></a></span>
-<span id="cb14-46"><a href=""></a><span class="co"># x축 라벨 설정</span></span>
-<span id="cb14-47"><a href=""></a>plt.xticks(angles[:<span class="op">-</span><span class="dv">1</span>], categories, size<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb14-48"><a href=""></a></span>
-<span id="cb14-49"><a href=""></a><span class="co"># y축 범위 설정</span></span>
-<span id="cb14-50"><a href=""></a>plt.ylim(<span class="dv">0</span>, <span class="dv">1</span>)  </span>
-<span id="cb14-51"><a href=""></a></span>
-<span id="cb14-52"><a href=""></a><span class="co"># 각 항공사에 대한 레이더 차트 그리기</span></span>
-<span id="cb14-53"><a href=""></a><span class="cf">for</span> i, row <span class="kw">in</span> weekend_ranking.iterrows():</span>
-<span id="cb14-54"><a href=""></a>    carrier <span class="op">=</span> row[<span class="st">'carrier'</span>]</span>
-<span id="cb14-55"><a href=""></a>    values <span class="op">=</span> [row[<span class="st">'flight_norm'</span>], row[<span class="st">'dest_norm'</span>], row[<span class="st">'delay_norm'</span>], row[<span class="st">'ontime_norm'</span>]]</span>
-<span id="cb14-56"><a href=""></a>    values <span class="op">+=</span> values[:<span class="dv">1</span>]    <span class="co"># 닫힌 다각형을 위해 처음 값 반복</span></span>
-<span id="cb14-57"><a href=""></a>    </span>
-<span id="cb14-58"><a href=""></a>    <span class="co"># 선 그리기</span></span>
-<span id="cb14-59"><a href=""></a>    plt.plot(angles, values, linewidth<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'solid'</span>, color<span class="op">=</span>carrier_colors[carrier], label<span class="op">=</span>carrier)</span>
-<span id="cb14-60"><a href=""></a>    <span class="co"># 영역 채우기</span></span>
-<span id="cb14-61"><a href=""></a>    plt.fill(angles, values, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span>carrier_colors[carrier])</span>
-<span id="cb14-62"><a href=""></a></span>
-<span id="cb14-63"><a href=""></a>plt.title(<span class="st">'주말 항공사 부문별 정규화 점수'</span>, pad<span class="op">=</span><span class="dv">30</span>) </span>
-<span id="cb14-64"><a href=""></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)   <span class="co"># 범례설정, loc으로 범례 위치 설정</span></span>
-<span id="cb14-65"><a href=""></a></span>
-<span id="cb14-66"><a href=""></a>plt.tight_layout()</span>
-<span id="cb14-67"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="co"># 주중/주말 레이더 차트</span></span>
+<span id="cb16-2"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">7</span>)) </span>
+<span id="cb16-3"><a href=""></a></span>
+<span id="cb16-4"><a href=""></a><span class="co"># 주중 레이더 차트</span></span>
+<span id="cb16-5"><a href=""></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, polar<span class="op">=</span><span class="va">True</span>)  <span class="co"># 극좌표(polar) 그래프 생성</span></span>
+<span id="cb16-6"><a href=""></a>categories <span class="op">=</span> section_names </span>
+<span id="cb16-7"><a href=""></a>N <span class="op">=</span> <span class="bu">len</span>(categories)</span>
+<span id="cb16-8"><a href=""></a></span>
+<span id="cb16-9"><a href=""></a><span class="co"># 각도 계산</span></span>
+<span id="cb16-10"><a href=""></a>angles <span class="op">=</span> [n <span class="op">/</span> <span class="bu">float</span>(N) <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N)]</span>
+<span id="cb16-11"><a href=""></a>angles <span class="op">+=</span> angles[:<span class="dv">1</span>]  <span class="co"># 닫힌 다각형을 위해 처음 값 반복</span></span>
+<span id="cb16-12"><a href=""></a></span>
+<span id="cb16-13"><a href=""></a><span class="co"># x축 라벨 설정</span></span>
+<span id="cb16-14"><a href=""></a>plt.xticks(angles[:<span class="op">-</span><span class="dv">1</span>], categories, size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb16-15"><a href=""></a></span>
+<span id="cb16-16"><a href=""></a></span>
+<span id="cb16-17"><a href=""></a><span class="co"># y축 범위 설정</span></span>
+<span id="cb16-18"><a href=""></a>plt.ylim(<span class="dv">0</span>, <span class="dv">1</span>)    <span class="co"># 최댓값 정규화 결과는 0~1 사이. 제일 끝이 1</span></span>
+<span id="cb16-19"><a href=""></a></span>
+<span id="cb16-20"><a href=""></a><span class="co"># 각 항공사별 색상 -&gt; 레이더 차트 선</span></span>
+<span id="cb16-21"><a href=""></a>carrier_colors <span class="op">=</span> {</span>
+<span id="cb16-22"><a href=""></a>    <span class="st">'UA'</span>: <span class="st">'royalblue'</span>,</span>
+<span id="cb16-23"><a href=""></a>    <span class="st">'AA'</span>: <span class="st">'tomato'</span>,</span>
+<span id="cb16-24"><a href=""></a>    <span class="st">'B6'</span>: <span class="st">'forestgreen'</span>,</span>
+<span id="cb16-25"><a href=""></a>    <span class="st">'DL'</span>: <span class="st">'purple'</span>,</span>
+<span id="cb16-26"><a href=""></a>    <span class="st">'EV'</span>: <span class="st">'orange'</span></span>
+<span id="cb16-27"><a href=""></a>}</span>
+<span id="cb16-28"><a href=""></a></span>
+<span id="cb16-29"><a href=""></a><span class="co"># 각 항공사에 대한 레이더 차트 그리기</span></span>
+<span id="cb16-30"><a href=""></a><span class="cf">for</span> i, row <span class="kw">in</span> weekday_ranking.iterrows():</span>
+<span id="cb16-31"><a href=""></a>    carrier <span class="op">=</span> row[<span class="st">'carrier'</span>]</span>
+<span id="cb16-32"><a href=""></a>    values <span class="op">=</span> [row[<span class="st">'flight_norm'</span>], row[<span class="st">'dest_norm'</span>], row[<span class="st">'delay_norm'</span>], row[<span class="st">'ontime_norm'</span>]]</span>
+<span id="cb16-33"><a href=""></a>    values <span class="op">+=</span> values[:<span class="dv">1</span>]    <span class="co"># 닫힌 다각형을 위해 처음 값 반복</span></span>
+<span id="cb16-34"><a href=""></a>    </span>
+<span id="cb16-35"><a href=""></a>    <span class="co"># 선 그리기</span></span>
+<span id="cb16-36"><a href=""></a>    plt.plot(angles, values, linewidth<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'solid'</span>, color<span class="op">=</span>carrier_colors[carrier], label<span class="op">=</span>carrier)</span>
+<span id="cb16-37"><a href=""></a>    <span class="co"># 영역 채우기</span></span>
+<span id="cb16-38"><a href=""></a>    plt.fill(angles, values, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span>carrier_colors[carrier])</span>
+<span id="cb16-39"><a href=""></a></span>
+<span id="cb16-40"><a href=""></a>plt.title(<span class="st">'주중 항공사 부문별 정규화 점수'</span>, pad<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb16-41"><a href=""></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb16-42"><a href=""></a></span>
+<span id="cb16-43"><a href=""></a><span class="co"># 주말 레이더 차트</span></span>
+<span id="cb16-44"><a href=""></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, polar<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-45"><a href=""></a></span>
+<span id="cb16-46"><a href=""></a><span class="co"># x축 라벨 설정</span></span>
+<span id="cb16-47"><a href=""></a>plt.xticks(angles[:<span class="op">-</span><span class="dv">1</span>], categories, size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb16-48"><a href=""></a></span>
+<span id="cb16-49"><a href=""></a><span class="co"># y축 범위 설정</span></span>
+<span id="cb16-50"><a href=""></a>plt.ylim(<span class="dv">0</span>, <span class="dv">1</span>)  </span>
+<span id="cb16-51"><a href=""></a></span>
+<span id="cb16-52"><a href=""></a><span class="co"># 각 항공사에 대한 레이더 차트 그리기</span></span>
+<span id="cb16-53"><a href=""></a><span class="cf">for</span> i, row <span class="kw">in</span> weekend_ranking.iterrows():</span>
+<span id="cb16-54"><a href=""></a>    carrier <span class="op">=</span> row[<span class="st">'carrier'</span>]</span>
+<span id="cb16-55"><a href=""></a>    values <span class="op">=</span> [row[<span class="st">'flight_norm'</span>], row[<span class="st">'dest_norm'</span>], row[<span class="st">'delay_norm'</span>], row[<span class="st">'ontime_norm'</span>]]</span>
+<span id="cb16-56"><a href=""></a>    values <span class="op">+=</span> values[:<span class="dv">1</span>]    <span class="co"># 닫힌 다각형을 위해 처음 값 반복</span></span>
+<span id="cb16-57"><a href=""></a>    </span>
+<span id="cb16-58"><a href=""></a>    <span class="co"># 선 그리기</span></span>
+<span id="cb16-59"><a href=""></a>    plt.plot(angles, values, linewidth<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'solid'</span>, color<span class="op">=</span>carrier_colors[carrier], label<span class="op">=</span>carrier)</span>
+<span id="cb16-60"><a href=""></a>    <span class="co"># 영역 채우기</span></span>
+<span id="cb16-61"><a href=""></a>    plt.fill(angles, values, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span>carrier_colors[carrier])</span>
+<span id="cb16-62"><a href=""></a></span>
+<span id="cb16-63"><a href=""></a>plt.title(<span class="st">'주말 항공사 부문별 정규화 점수'</span>, pad<span class="op">=</span><span class="dv">30</span>) </span>
+<span id="cb16-64"><a href=""></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)   <span class="co"># 범례설정, loc으로 범례 위치 설정</span></span>
+<span id="cb16-65"><a href=""></a></span>
+<span id="cb16-66"><a href=""></a>plt.tight_layout()</span>
+<span id="cb16-67"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="조원-및-업무-분담" class="title-slide slide level1 center">
+<h1>조원 및 업무 분담</h1>
+
 </section>
-<section id="조원-및-업무-분담" class="slide level2">
+<section id="조원-및-업무-분담-1" class="slide level2">
 <h2>조원 및 업무 분담</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 82%">
+<col style="width: 16%">
+<col style="width: 83%">
 </colgroup>
 <tbody>
 <tr class="odd">

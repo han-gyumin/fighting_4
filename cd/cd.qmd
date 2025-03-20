@@ -16,29 +16,46 @@ format:
 
 ## 목차
 
-1.  목적 & 배경
-2.  5대 항공사 선정 과정
+::: {.incremental}
+
+1.  **목적 & 배경**
+2.  **5대 항공사 선정**
+    -   5대 항공사 선정 기준
+    -   데이터셋 소개
     -   3 개의 공항에서 모두 출발하는 항공사
     -   항공사별 운영 횟수
     -   항공사별 비행거리
     -   항공사별 보유 항공기 수
     -   항공사별 좌석 수
-3.  최적 항공사 추천 기준
+3.  **최적 항공사 추천**
+    -   추천 기준 & 점수 산정 방식
     -   날짜 전처리
     -   항공사 분석 - 주중
     -   항공사 분석 - 주말
-    -   주중/주말 시각화
-4.  결과
+    -   결론 (시각화)
+4.  **조원 및 업무 분담**
+
+:::
 
 # 목적 & 배경
 
 ## 목적 & 배경
 
--   자사(위치: 뉴욕)을 방문한 클라이언트들에게 **각자의 공항으로 돌아가는 최적의 항공사 추천**을 위함
+-   자사(위치: 뉴욕)를 방문한 클라이언트들에게 **각자의 공항으로 돌아가는 최적의 항공사 추천**을 위함
 
--   항공사마다 운항 빈도, 비행 거리, 정시 운항률, 지연 시간과 같은 요소가 달라 종합적인 최적의 항공사 선택이 필요
+<br>
+
+- 항공사마다 운항 빈도, 비행 거리, 정시 운항률, 지연 시간과 같은 요소가 달라 **종합적인 최적의 항공사** 선택 필요
+
+<br>
+
+- **클라이언트별 니즈**를 고려하여 **항공사 선정 기준 세분화** 필요
+
+
 
 ------------------------------------------------------------------------
+
+# 5대 항공사 선정
 
 ## 5대 항공사 선정 기준
 
@@ -47,11 +64,11 @@ format:
     -   **운영 규모가 큰** 항공사
         -   운영 횟수 & 운영 거리
         -   보유 항공기 수
-        -   좌석 수 ![](ditance.png){.absolute bottom="0" right="10" width="450" height="450"} ![](planes.png){.absolute bottom="0" right="520" width="450" height="450"} ![](runtime.png){.absolute bottom="0" right="1030" width="450" height="450"} ![](seat.png){.absolute bottom="11" right="1540" width="450" height="450"}
+        -   좌석 수 ![](seat.png){.absolute bottom="0" right="10" width="450" height="450"} ![](planes.png){.absolute bottom="0" right="520" width="450" height="450"} ![](ditance.png){.absolute bottom="0" right="1030" width="450" height="450"} ![](runtime.png){.absolute bottom="11" right="1540" width="450" height="450"}
 
 ------------------------------------------------------------------------
 
-### 1. 3개의 공항에서 모두 출발하는 항공사
+### 데이터셋 소개
 
 ```{python echo=FALSE}
 import pandas as pd
@@ -59,9 +76,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from nycflights13 import flights, planes
 import matplotlib
-merge_df = pd.merge(flights, planes, on='tailnum', how='left')
-import matplotlib
 import numpy as np
+pd.set_option('display.max_columns', None) 
+pd.set_option('display.max_colwidth', None) 
 # 한글 폰트 설정
 matplotlib.rc('font', family='Malgun Gothic')
 
@@ -71,13 +88,40 @@ matplotlib.rcParams['axes.unicode_minus'] = False
 
 ```{python}
 #| echo: True
+merge_df = pd.merge(flights, planes, on='tailnum', how='left')
+print(merge_df.head(2))
+```
+
+<br>
+
+::: {.fragment style="display: flex; justify-content: flex-start;"}
+
+|                        |                              |
+|------------------------|------------------------------|
+| **year_x, month, day** | 항공기 출발 날짜(년, 월, 일) |
+| **dep_delay**          | 출발 지연 시간               |
+| **carrier**            | 항공사명                     |
+| **tailnum**            | 항공기 등록 코드             |
+| **origin**             | 출발 공항                    |
+| **dest**               | 도착 공항                    |
+| **distance**           | 비행 거리                    |
+| **seats**              | 좌석 수                      |
+
+:::
+
+------------------------------------------------------------------------
+
+### 1. 3개의 공항에서 모두 출발하는 항공사
+
+```{python}
+#| echo: True
 carrier_airport_count = merge_df.groupby('carrier')['origin'] \
     .nunique() \
     .reset_index() \
     .rename(columns={'origin': 'airport_count'})
 carrier_airport_count.loc[carrier_airport_count['airport_count']==3, :]
-print(carrier_airport_count)
-
+carrier_airport_count_sorted=carrier_airport_count.sort_values(by='airport_count', ascending= False)
+print(carrier_airport_count_sorted)
 ```
 
 ------------------------------------------------------------------------
@@ -93,7 +137,8 @@ carrier_total_count = merge_df.pivot_table(
     aggfunc='count'
 ).reset_index()
 carrier_total_count.sort_values(by='year_x',ascending=False)
-print(carrier_total_count.sort_values)
+carrier_total_count_sorted = carrier_total_count.sort_values(by='year_x',ascending=False)
+print(carrier_total_count_sorted)
 ```
 
 ------------------------------------------------------------------------
@@ -113,12 +158,13 @@ print(total_distance_sorted)
 
 ```{python}
 #| echo: True
-table_sort = merge_df.pivot_table(
+plane_count = merge_df.pivot_table(
     index='carrier', 
     values='tailnum',
     aggfunc='nunique'
 ).reset_index()
-print(table_sort)
+plane_count_sorted= plane_count.sort_values(by='tailnum' , ascending=False)
+print(plane_count_sorted)
 ```
 
 ------------------------------------------------------------------------
@@ -140,7 +186,7 @@ print(total_seat_unique_sorted)
 ```{python}
 #| echo: False
 carrier_stats = pd.merge(carrier_total_count, total_distance, on='carrier')
-carrier_stats = pd.merge(carrier_stats, table_sort, on='carrier')
+carrier_stats = pd.merge(carrier_stats, plane_count, on='carrier')
 carrier_stats = pd.merge(carrier_stats, total_seat_unique, on='carrier')
 
 
@@ -216,7 +262,7 @@ plt.show()
 
 <!-- # 주제2. 주중과 주말 각각 따로 추천할 항공사 찾기 (최댓값 정규화 적용) -->
 
-# 최적 항공사 추천 기준
+# 최적 항공사 추천
 
 ------------------------------------------------------------------------
 
@@ -347,14 +393,18 @@ print(weekday_ranking)
 
 <br>
 
+::: {.fragment style="display: flex; justify-content: flex-start;"}
+
 |                    |                           |
 |--------------------|---------------------------|
 | **weekday_flight** | 총 운항 수                |
 | **dest_count**     | 도착지 종류 수            |
 | **avg_delay**      | 평균 출발 지연 시간       |
-| **ontime_ratio**   | 정시 운항 비율(정시= +-5) |
+| **ontime_ratio**   | 정시 운항 비율(정시에서 ±5분 이내) |
 | **total_norm**     | 정규화 점수 합산          |
 | **final_rank**     | 최종 순위                 |
+
+:::
 
 ## 항공사 분석 - 주말
 
@@ -421,14 +471,18 @@ print(weekend_ranking)
 
 <br>
 
+::: {.fragment style="display: flex; justify-content: flex-start;"}
+
 |                    |                           |
 |--------------------|---------------------------|
 | **weekend_flight** | 총 운항 수                |
 | **dest_count**     | 도착지 종류 수            |
 | **avg_delay**      | 평균 출발 지연 시간       |
-| **ontime_ratio**   | 정시 운항 비율(정시= +-5) |
+| **ontime_ratio**   | 정시 운항 비율(정시에서 ±5분 이내) |
 | **total_norm**     | 정규화 점수 합산          |
 | **final_rank**     | 최종 순위                 |
+
+:::
 
 ## 결론
 
@@ -437,7 +491,7 @@ print(weekend_ranking)
 
 ```{python}
 # 2. 주중/주말 스택 막대 그래프 - 영역별 점수
-plt.figure(figsize=(14, 8))
+plt.figure(figsize=(15, 8))
 plt.subplot(1, 2, 1)
 bottom_values = np.zeros(len(weekday_ranking))
 
@@ -457,15 +511,16 @@ for i, section in enumerate(sections):
 
 plt.xlabel('항공사')
 plt.ylabel('정규화된 값 (0~1)')
-plt.title('주중 항공사별 부문 점수 비교 (최댓값 정규화)')
+plt.title('주중 항공사별 부문 점수 비교 (최댓값 정규화)', fontsize = 20)
 plt.legend(loc='upper right')
 
 # 각 막대 위에 총점 표시
 for i, carrier in enumerate(weekday_sorted['carrier']):
-    plt.text(i, weekday_sorted.iloc[i]['total_norm'] + 0.1, 
+    plt.text(i, weekday_sorted.iloc[i]['total_norm']+0.01 , 
              f"{weekday_sorted.iloc[i]['total_norm']:.2f}", 
-             ha='center')
-
+             ha='center',
+             fontsize = 13)
+plt.xticks(fontsize = 20)
 # 3. 주말 스택 막대 그래프 - 영역별 점수
 plt.subplot(1, 2, 2)
 bottom_values = np.zeros(len(weekend_ranking))
@@ -481,15 +536,16 @@ for i, section in enumerate(sections):
 
 plt.xlabel('항공사')
 plt.ylabel('정규화된 값 (0~1)')
-plt.title('주말 항공사별 부문 점수 비교 (최댓값 정규화)')
+plt.title('주말 항공사별 부문 점수 비교 (최댓값 정규화)', fontsize = 20)
 plt.legend(loc='upper right')
 
 # 각 막대 위에 총점 표시
 for i, carrier in enumerate(weekend_sorted['carrier']):
-    plt.text(i, weekend_sorted.iloc[i]['total_norm'] + 0.1, 
+    plt.text(i, weekend_sorted.iloc[i]['total_norm'] + 0.01, 
              f"{weekend_sorted.iloc[i]['total_norm']:.2f}", 
-             ha='center')
-
+             ha='center',
+             fontsize = 13)
+plt.xticks(fontsize = 20)
 plt.tight_layout()
 plt.show()
 ```
@@ -547,7 +603,7 @@ angles += angles[:1]  # 닫힌 다각형을 위해 처음 값 반복
 
 
 # x축 라벨 설정
-plt.xticks(angles[:-1], categories, size=10)
+plt.xticks(angles[:-1], categories, size=13)
 # 레이더 차트 x축(각도 방향) 설정
 #     ticks: 눈금의 위치 (각도 값, angles[:-1])
 #     labels: 눈금에 표시할 레이블 (카테고리명, categories)
@@ -597,7 +653,7 @@ for i, row in weekday_ranking.iterrows():
 # color=carrier_colors[carrier] → 항공사별 색상 적용
 
 
-plt.title('주중 항공사 부문별 정규화 점수', pad=30) #pad : 위쪽 여백
+plt.title('주중 항공사 부문별 정규화 점수', pad=30, fontsize = 18) #pad : 위쪽 여백
 plt.legend(loc='upper right')
 
 # 주말 레이더 차트
@@ -605,7 +661,7 @@ plt.subplot(1, 2, 2, polar=True)
 # 1행 2열짜리 그래프 중에서 두 번째 그래프를 생성
 
 # x축 라벨 설정
-plt.xticks(angles[:-1], categories, size=10)
+plt.xticks(angles[:-1], categories, size=13)
 
 # y축 범위 설정
 plt.ylim(0, 1)  # 최댓값 정규화 결과는 0~1 사이
@@ -621,7 +677,7 @@ for i, row in weekend_ranking.iterrows():
     # 영역 채우기
     plt.fill(angles, values, alpha=0.1, color=carrier_colors[carrier])
 
-plt.title('주말 항공사 부문별 정규화 점수', pad=30) 
+plt.title('주말 항공사 부문별 정규화 점수', pad=30,fontsize = 18) 
 plt.legend(loc='upper right') # 범례설정, loc으로 범례 위치 설정
 
 plt.tight_layout()
@@ -636,7 +692,7 @@ plt.show()
 plt.figure(figsize=(15, 7)) 
 
 # 주중 레이더 차트
-plt.subplot(1, 2, 1, polar=True)  # 극좌표(polar): 그래프 생성
+plt.subplot(1, 2, 1, polar=True)  # 극좌표(polar) 그래프 생성
 categories = section_names 
 N = len(categories)
 
@@ -702,20 +758,22 @@ plt.show()
 ```
 :::
 
+# 조원 및 업무 분담
+
 ## 조원 및 업무 분담
 
-+---------------+-------------------------------------------------------------------------+
-| **이주연**    | -   **항공사 규모 분석** : 출발 공항, 운영 횟수                         |
-|               |                                                                         |
-|               | -   qmd 제작 및 발표                                                    |
-+---------------+-------------------------------------------------------------------------+
-| **신지원**    | -   **항공사 규모 분석** : 비행 거리, 보유 항공기 수 , 좌석 수          |
-|               |                                                                         |
-|               | -   5대 항공사 선정 시각화                                              |
-+---------------+-------------------------------------------------------------------------+
-| **홍주형**    | -   **5대 항공사 데이터 분석** : (주중/주말) 부문별 점수 산정 및 시각화 |
-+---------------+-------------------------------------------------------------------------+
-| **한규민**    | -   **5대 항공사 데이터 분석** : (주중/주말) 부문별 점수 산정 및 시각화 |
-+---------------+-------------------------------------------------------------------------+
++--------------+-------------------------------------------------------------------------+
+| **이주연**   | -   **항공사 규모 분석** : 출발 공항, 운영 횟수                         |
+|              |                                                                         |
+|              | -   qmd 제작 및 발표                                                    |
++--------------+-------------------------------------------------------------------------+
+| **신지원**   | -   **항공사 규모 분석** : 비행 거리, 보유 항공기 수 , 좌석 수          |
+|              |                                                                         |
+|              | -   5대 항공사 선정 시각화                                              |
++--------------+-------------------------------------------------------------------------+
+| **홍주형**   | -   **5대 항공사 데이터 분석** : (주중/주말) 부문별 점수 산정 및 시각화 |
++--------------+-------------------------------------------------------------------------+
+| **한규민**   | -   **5대 항공사 데이터 분석** : (주중/주말) 부문별 점수 산정 및 시각화 |
++--------------+-------------------------------------------------------------------------+
 
 # Thank you!
