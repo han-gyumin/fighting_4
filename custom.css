@@ -1,0 +1,24 @@
+/* 기본 중앙 정렬 유지 - 타이틀 슬라이드용 */
+section#title-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100%; */
+  }
+  
+  /* 타이틀 슬라이드 외 나머지 슬라이드에서 위쪽 정렬 */
+  .reveal section:not(#title-slide) {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: flex-start;     /* 위쪽 정렬 */
+    height: 100%;
+    padding-top: 50px; /* 위 여백 (조절 가능) */
+  }
+  
+  /* 텍스트 왼쪽 정렬 (선택사항) */
+  .reveal section:not(#title-slide) h1,
+  .reveal section:not(#title-slide) h2,
+  .reveal section:not(#title-slide) p {
+    text-align: left;
+  }
+  

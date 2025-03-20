@@ -1,0 +1,66 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"nycflights13\"\n",
+        "subtitle : \"항공사를 조사해 보아요\"\n",
+        "author: \"4조\"\n",
+        "format: revealjs\n",
+        "logo: fighting4zo.png\n",
+        "reference-location: document  \n",
+        "footer: \"fighting 4zo\"\n",
+        "code-overflow: scroll\n",
+        "css: custom.css\n",
+        "---\n",
+        "\n",
+        "\n",
+        "## 목차\n",
+        "\n",
+        "1.  목적 & 배경\n",
+        "2.  5대 항공사 선정 과정\n",
+        "3.  최적 항공사 추천 기준\n",
+        "\n",
+        "# 목적 & 배경\n",
+        "\n",
+        "-   클라이언트를 위한 어쩌구저쩌구 항공사 \\~\\~\n",
+        "\n",
+        "------------------------------------------------------------------------\n",
+        "\n",
+        "# 항공사 선정 과정\n",
+        "\n",
+        "## adf\n"
+      ],
+      "id": "0d7c22c2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "scrollable": true
+      },
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "total_distance = merge_df_filtered.groupby('carrier')['distance'].sum().reset_index()\n",
+        "total_distance_sorted = total_distance.sort_values(by=\"distance\", ascending=False)\n",
+        "\n",
+        "total_distance_sorted"
+      ],
+      "id": "cf90d172",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\USER\\AppData\\Roaming\\Python\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

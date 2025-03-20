@@ -2,11 +2,36 @@
 title: "nycflights13"
 subtitle : "항공사를 조사해 보아요"
 author: "4조"
-format: 
-    revealjs:
-        logo: fighting4zo.png
-        theme: moon
-        reference-location: document  
-        footer: "fighting 4zo"
+format: revealjs
+logo: fighting4zo.png
+reference-location: document  
+footer: "fighting 4zo"
+code-overflow: scroll
+css: custom.css
 ---
 
+## 목차
+
+1.  목적 & 배경
+2.  5대 항공사 선정 과정
+3.  최적 항공사 추천 기준
+
+# 목적 & 배경
+
+-   클라이언트를 위한 어쩌구저쩌구 항공사 \~\~
+
+------------------------------------------------------------------------
+
+# 항공사 선정 과정
+
+## adf
+
+```{python}
+#| echo: true
+#| scrollable: true
+
+total_distance = merge_df_filtered.groupby('carrier')['distance'].sum().reset_index()
+total_distance_sorted = total_distance.sort_values(by="distance", ascending=False)
+
+total_distance_sorted
+```
