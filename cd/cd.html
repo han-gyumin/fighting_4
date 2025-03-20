@@ -212,8 +212,13 @@
 <section id="목차" class="slide level2">
 <h2>목차</h2>
 <div>
+<div class="columns">
+<div class="column" style="width:25%;">
 <ol type="1">
 <li class="fragment"><strong>목적 &amp; 배경</strong></li>
+</ol>
+</div><div class="column" style="width:25%;">
+<ol start="2" type="1">
 <li class="fragment"><strong>5대 항공사 선정</strong>
 <ul>
 <li class="fragment">5대 항공사 선정 기준</li>
@@ -224,6 +229,9 @@
 <li class="fragment">항공사별 보유 항공기 수</li>
 <li class="fragment">항공사별 좌석 수</li>
 </ul></li>
+</ol>
+</div><div class="column" style="width:25%;">
+<ol start="3" type="1">
 <li class="fragment"><strong>최적 항공사 추천</strong>
 <ul>
 <li class="fragment">추천 기준 &amp; 점수 산정 방식</li>
@@ -232,8 +240,12 @@
 <li class="fragment">항공사 분석 - 주말</li>
 <li class="fragment">결론 (시각화)</li>
 </ul></li>
+</ol>
+</div><div class="column" style="width:25%;">
+<ol start="4" type="1">
 <li class="fragment"><strong>조원 및 업무 분담</strong></li>
 </ol>
+</div></div>
 </div>
 </section>
 <section>
@@ -248,15 +260,28 @@
 </ul>
 <p><br></p>
 <ul>
-<li>항공사마다 운항 빈도, 비행 거리, 정시 운항률, 지연 시간과 같은 요소가 달라 <strong>종합적인 최적의 항공사</strong> 선택 필요</li>
+<li>항공사마다 운항 빈도, 비행 거리, 정시 운항률, 지연 시간과 같은 요소가 달라 <strong>종합적인 최적의 항공사</strong> 선택 필요
+<ul>
+<li>5대 항공사 선정</li>
+</ul></li>
 </ul>
 <p><br></p>
 <ul>
 <li><strong>클라이언트별 니즈</strong>를 고려하여 <strong>항공사 선정 기준 세분화</strong> 필요</li>
 </ul>
-</section>
-<section class="slide level2">
-
+<aside class="notes">
+<p>UA, DL</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="대-항공사-선정" class="title-slide slide level1 center">
@@ -268,7 +293,10 @@
 <ul>
 <li><strong>최근 운영 실적이 안정적이고 신뢰할 수 있는 항공사</strong>
 <ul>
-<li>우리 지역에서 <strong>활발히 운영</strong>하는 항공사</li>
+<li>우리 지역에서 <strong>활발히 운영</strong>하는 항공사
+<ul>
+<li>뉴욕 공항 3곳 전부 운영</li>
+</ul></li>
 <li><strong>운영 규모가 큰</strong> 항공사
 <ul>
 <li>운영 횟수 &amp; 운영 거리</li>
@@ -277,11 +305,29 @@
 </ul></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<ul>
+<li>가장 우선적으로 클라이언트가 어디서든 이륙할 수 있도록 뉴욕에 있는 3개의 공항 모두에서 운영중인 항공사를 선정 그 다음으로</li>
+<li>운영 횟수와 운영 거리가 적은 항공사는, 경험이 적은 항공사라고 생각 변수에 취약할 수 있고, 클라이언트가 원하는 노선이 없을 수 있다</li>
+<li>결항 등의 위험이 낮을 수 있음</li>
+<li>항공사가 보유하고 있는 좌석 수 (시장 점유율이 높고, 수요가 충분히 받쳐주는 항공사일 수 있음)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="데이터셋-소개">데이터셋 소개</h3>
-<div id="ad800baf" class="cell" data-execution_count="2">
+<div id="02afc167" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>merge_df <span class="op">=</span> pd.merge(flights, planes, on<span class="op">=</span><span class="st">'tailnum'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
 <span id="cb1-2"><a href=""></a><span class="bu">print</span>(merge_df.head(<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -345,165 +391,257 @@
 </tbody>
 </table>
 </div>
+<aside class="notes">
+<p>데이터 선정 과정의 분석 설명에 앞서, 간단하게 사용된 데이터 셋을 설명드리도록 하겠습니다.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="개의-공항에서-모두-출발하는-항공사">1. 3개의 공항에서 모두 출발하는 항공사</h3>
-<div id="0112b29c" class="cell" data-execution_count="3">
+<div id="8cff61b3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>carrier_airport_count <span class="op">=</span> merge_df.groupby(<span class="st">'carrier'</span>)[<span class="st">'origin'</span>] <span class="op">\</span></span>
 <span id="cb3-2"><a href=""></a>    .nunique() <span class="op">\</span></span>
 <span id="cb3-3"><a href=""></a>    .reset_index() <span class="op">\</span></span>
 <span id="cb3-4"><a href=""></a>    .rename(columns<span class="op">=</span>{<span class="st">'origin'</span>: <span class="st">'airport_count'</span>})</span>
-<span id="cb3-5"><a href=""></a>carrier_airport_count.loc[carrier_airport_count[<span class="st">'airport_count'</span>]<span class="op">==</span><span class="dv">3</span>, :]</span>
-<span id="cb3-6"><a href=""></a>carrier_airport_count_sorted<span class="op">=</span>carrier_airport_count.sort_values(by<span class="op">=</span><span class="st">'airport_count'</span>, ascending<span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb3-7"><a href=""></a><span class="bu">print</span>(carrier_airport_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href=""></a></span>
+<span id="cb3-6"><a href=""></a>carrier_airport_count.loc[carrier_airport_count[<span class="st">'airport_count'</span>]<span class="op">==</span><span class="dv">3</span>, :]</span>
+<span id="cb3-7"><a href=""></a></span>
+<span id="cb3-8"><a href=""></a>carrier_airport_count_sorted<span class="op">=</span>carrier_airport_count.sort_values(by<span class="op">=</span><span class="st">'airport_count'</span>, ascending<span class="op">=</span> <span class="va">False</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-9"><a href=""></a></span>
+<span id="cb3-10"><a href=""></a><span class="bu">print</span>(carrier_airport_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier  airport_count
 0       9E              3
 1       AA              3
-3       B6              3
-4       DL              3
-5       EV              3
-12      US              3
-11      UA              3
-9       MQ              3
-14      WN              2
-13      VX              2
+2       B6              3
+3       DL              3
+4       EV              3
+5       US              3
+6       UA              3
+7       MQ              3
+8       WN              2
+9       VX              2
 10      OO              2
-2       AS              1
-7       FL              1
-6       F9              1
-8       HA              1
+11      AS              1
+12      FL              1
+13      F9              1
+14      HA              1
 15      YV              1</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>merge_df.groupby(‘carrier’)[‘origin’] → 항공사(carrier)별로 출발 공항(origin) 데이터를 그룹화 .nunique() → 각 항공사 별 고유한 공항 개수 계산 .reset_index() → DataFrame 형태로 변환 .rename(columns={‘origin’: ‘airport_count’}) → origin 열을 airport_count로 변경 (더 직관적인 이름)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="항공사별-운영-횟수">2. 항공사별 운영 횟수</h3>
-<div id="e52341ac" class="cell" data-execution_count="4">
+<div id="2aafce57" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>carrier_total_count <span class="op">=</span> merge_df.pivot_table(</span>
 <span id="cb5-2"><a href=""></a>    index<span class="op">=</span><span class="st">'carrier'</span>,</span>
 <span id="cb5-3"><a href=""></a>    values<span class="op">=</span><span class="st">'year_x'</span>,</span>
-<span id="cb5-4"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">'count'</span></span>
+<span id="cb5-4"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">'count'</span>,</span>
 <span id="cb5-5"><a href=""></a>).reset_index()</span>
-<span id="cb5-6"><a href=""></a>carrier_total_count.sort_values(by<span class="op">=</span><span class="st">'year_x'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb5-7"><a href=""></a>carrier_total_count_sorted <span class="op">=</span> carrier_total_count.sort_values(by<span class="op">=</span><span class="st">'year_x'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb5-8"><a href=""></a><span class="bu">print</span>(carrier_total_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a>carrier_total_count.sort_values(by<span class="op">=</span><span class="st">'year_x'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-8"><a href=""></a></span>
+<span id="cb5-9"><a href=""></a>carrier_total_count_sorted <span class="op">=</span> carrier_total_count.sort_values(by<span class="op">=</span><span class="st">'year_x'</span>,ascending<span class="op">=</span><span class="va">False</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-10"><a href=""></a></span>
+<span id="cb5-11"><a href=""></a><span class="bu">print</span>(carrier_total_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier  year_x
-11      UA   58665
-3       B6   54635
-5       EV   54173
-4       DL   48110
-1       AA   32729
-9       MQ   26397
-12      US   20536
-0       9E   18460
-14      WN   12275
-13      VX    5162
-7       FL    3260
-2       AS     714
-6       F9     685
-15      YV     601
-8       HA     342
-10      OO      32</code></pre>
+0       UA   58665
+1       B6   54635
+2       EV   54173
+3       DL   48110
+4       AA   32729
+5       MQ   26397
+6       US   20536
+7       9E   18460
+8       WN   12275
+9       VX    5162
+10      FL    3260
+11      AS     714
+12      F9     685
+13      YV     601
+14      HA     342
+15      OO      32</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>2013년 1동안의 총 운영횟수를 분석한 코드로 각 항공사 별 운항 횟수를 year_x 가 결측치가 없었기 때문에 year_x를 밸류로 지정하여 계산하고, 이를 내림차순으로 정렬</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="항공사별-비행-거리">3. 항공사별 비행 거리</h3>
-<div id="bcb24347" class="cell" data-execution_count="5">
+<div id="95411ff6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>total_distance <span class="op">=</span> merge_df.groupby(<span class="st">'carrier'</span>)[<span class="st">'distance'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb7-2"><a href=""></a>total_distance_sorted <span class="op">=</span> total_distance.sort_values(by<span class="op">=</span><span class="st">"distance"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-3"><a href=""></a><span class="bu">print</span>(total_distance_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href=""></a></span>
+<span id="cb7-3"><a href=""></a>total_distance_sorted <span class="op">=</span> total_distance.sort_values(by<span class="op">=</span><span class="st">"distance"</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-4"><a href=""></a></span>
+<span id="cb7-5"><a href=""></a><span class="bu">print</span>(total_distance_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier  distance
-11      UA  89705524
-4       DL  59507317
-3       B6  58384137
-1       AA  43864584
-5       EV  30498951
-9       MQ  15033955
-13      VX  12902327
-14      WN  12229203
-12      US  11365778
-0       9E   9788152
-7       FL   2167344
-2       AS   1715028
-8       HA   1704186
-6       F9   1109700
-15      YV    225395
-10      OO     16026</code></pre>
+0       UA  89705524
+1       DL  59507317
+2       B6  58384137
+3       AA  43864584
+4       EV  30498951
+5       MQ  15033955
+6       VX  12902327
+7       WN  12229203
+8       US  11365778
+9       9E   9788152
+10      FL   2167344
+11      AS   1715028
+12      HA   1704186
+13      F9   1109700
+14      YV    225395
+15      OO     16026</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>마찬가지로 2013년 1동안의 데이터 기준이고, 각 항공사(carrier)별 총 비행 거리(distance)를 계산하고, 이를 내림차순으로 정렬하는 코드 UA 부터 AA까지 비행 거리가 많다는 것을 알 수</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="항공사별-보유-항공기-수">4. 항공사별 보유 항공기 수</h3>
-<div id="fbce0758" class="cell" data-execution_count="6">
+<div id="892a5ccb" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>plane_count <span class="op">=</span> merge_df.pivot_table(</span>
 <span id="cb9-2"><a href=""></a>    index<span class="op">=</span><span class="st">'carrier'</span>, </span>
 <span id="cb9-3"><a href=""></a>    values<span class="op">=</span><span class="st">'tailnum'</span>,</span>
 <span id="cb9-4"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">'nunique'</span></span>
 <span id="cb9-5"><a href=""></a>).reset_index()</span>
-<span id="cb9-6"><a href=""></a>plane_count_sorted<span class="op">=</span> plane_count.sort_values(by<span class="op">=</span><span class="st">'tailnum'</span> , ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb9-7"><a href=""></a><span class="bu">print</span>(plane_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href=""></a></span>
+<span id="cb9-7"><a href=""></a>plane_count_sorted<span class="op">=</span> plane_count.sort_values(by<span class="op">=</span><span class="st">'tailnum'</span> , ascending<span class="op">=</span><span class="va">False</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-8"><a href=""></a></span>
+<span id="cb9-9"><a href=""></a><span class="bu">print</span>(plane_count_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier  tailnum
-4       DL      629
-11      UA      620
-1       AA      600
-14      WN      582
-5       EV      316
-12      US      289
-9       MQ      237
-0       9E      203
-3       B6      193
-7       FL      129
-2       AS       84
-15      YV       58
-13      VX       53
-10      OO       28
-6       F9       25
-8       HA       14</code></pre>
+0       DL      629
+1       UA      620
+2       AA      600
+3       WN      582
+4       EV      316
+5       US      289
+6       MQ      237
+7       9E      203
+8       B6      193
+9       FL      129
+10      AS       84
+11      YV       58
+12      VX       53
+13      OO       28
+14      F9       25
+15      HA       14</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>각 항공사(carrier)별 보유 항공기(tailnum) 개수를 중복을 없애고 고유한 대수를 세기 위해 unique를 사용하여 계산하고, 이를 내림차순으로 정렬하는 코드</p>
+<p>항공기 기종이 3가지 있었으나 결측치가 많아 유의미한 데이터가 나오지 않아 전체적으로 보유한 대수만을 취하기로 했습니다.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="항공사별-좌석-수">5. 항공사별 좌석 수</h3>
-<div id="5615c87c" class="cell" data-execution_count="7">
+<div id="893e11e3" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>unique_planes <span class="op">=</span> merge_df[[<span class="st">'carrier'</span>, <span class="st">'tailnum'</span>, <span class="st">'seats'</span>]].drop_duplicates()</span>
-<span id="cb11-2"><a href=""></a>total_seat_unique <span class="op">=</span> unique_planes.groupby(<span class="st">'carrier'</span>)[<span class="st">'seats'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb11-3"><a href=""></a>total_seat_unique_sorted <span class="op">=</span> total_seat_unique.sort_values(by<span class="op">=</span><span class="st">'seats'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb11-4"><a href=""></a><span class="bu">print</span>(total_seat_unique_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href=""></a></span>
+<span id="cb11-3"><a href=""></a>total_seat_unique <span class="op">=</span> unique_planes.groupby(<span class="st">'carrier'</span>)[<span class="st">'seats'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb11-4"><a href=""></a></span>
+<span id="cb11-5"><a href=""></a>total_seat_unique_sorted <span class="op">=</span> total_seat_unique.sort_values(by<span class="op">=</span><span class="st">'seats'</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-6"><a href=""></a></span>
+<span id="cb11-7"><a href=""></a><span class="bu">print</span>(total_seat_unique_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   carrier     seats
-11      UA  116252.0
-4       DL  115715.0
-14      WN   82700.0
-12      US   57821.0
-1       AA   29309.0
-3       B6   27148.0
-5       EV   19525.0
-0       9E   13685.0
-2       AS   13465.0
-7       FL   13451.0
-13      VX    8967.0
-8       HA    5278.0
-15      YV    5127.0
-6       F9    3612.0
-10      OO    2210.0
-9       MQ      34.0</code></pre>
+0       UA  116252.0
+1       DL  115715.0
+2       WN   82700.0
+3       US   57821.0
+4       AA   29309.0
+5       B6   27148.0
+6       EV   19525.0
+7       9E   13685.0
+8       AS   13465.0
+9       FL   13451.0
+10      VX    8967.0
+11      HA    5278.0
+12      YV    5127.0
+13      F9    3612.0
+14      OO    2210.0
+15      MQ      34.0</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>동일한 항공기가 여러 번 기록된 경우가 있어, 중복된 데이터를 제거하고자 .drop_duplicates()을 사용하여 각 항공사사의 고유 좌석 수를 구했습니다.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="종합---5대-항공사-선정">종합 - 5대 항공사 선정</h3>
-<div id="bdb5c63d" class="cell" data-execution_count="8">
+<div id="e1225fcf" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -512,18 +650,44 @@
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>각 지표를 0~1 사이의 비율로 정규화 예를 들어, 운항 횟수가 가장 많은 항공사의 비율은 1.0, 다른 항공사는 1 이하의 값을 가짐 최댓값 분의 각 항공사의 값</p>
+<p>top5 항공사가 구해짐짐</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- # 주제2. 주중과 주말 각각 따로 추천할 항공사 찾기 (최댓값 정규화 적용) -->
 </section></section>
 <section>
 <section id="최적-항공사-추천" class="title-slide slide level1 center">
 <h1>최적 항공사 추천</h1>
-
+<aside class="notes">
+<p>top5 항공사를 추천해주기엔 클라이언트마다 니즈가 다를 것이므로 맞춤 추천을 해줄 기준을 데이터를 통해 분석하고 정규화를 통해 점수를 부여하여 최적 항공사를 뽑아보았습니다.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="추천-기준-점수-산정-방식" class="slide level2">
 <h2>추천 기준 &amp; 점수 산정 방식</h2>
 <h3 id="기준">기준</h3>
 <ul>
-<li>주중, 주말별 세가지 기준별로 100점 만점으로 정규화
+<li>주중, 주말별 네가지 기준별로 각 1점, 총 4점 만점으로 정규화
 <ol type="1">
 <li>총 운항 수</li>
 <li>평균 지연 시간</li>
@@ -562,10 +726,24 @@
 </tr>
 </tbody>
 </table>
+<aside class="notes">
+<p>주중과 주말로 나누어서 각각 총 운항 수, 평균 지연 시간, 정시 운항 비율, 경로 다양성의 점수를 계산하였습니다.</p>
+<p>각 지표별 최댓값을 기준으로 정규화하여 점수를 산정하였습니다.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="날짜-전처리" class="slide level2">
 <h2>날짜 전처리</h2>
-<div id="c3b91165" class="cell" data-execution_count="9">
+<div id="3489185c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="co"># 상위 5개 항공사 필터링</span></span>
 <span id="cb13-2"><a href=""></a>top_carrier <span class="op">=</span> [<span class="st">'UA'</span>, <span class="st">'AA'</span>, <span class="st">'B6'</span>, <span class="st">'DL'</span>, <span class="st">'EV'</span>]</span>
 <span id="cb13-3"><a href=""></a></span>
@@ -601,7 +779,7 @@
 </section>
 <section id="항공사-분석---주중" class="slide level2">
 <h2>항공사 분석 - 주중</h2>
-<div id="492a12fa" class="cell" data-execution_count="10">
+<div id="e058be88" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>  carrier  weekday_flights  flight_norm  dest_count  dest_norm  avg_delay  \
 0      UA            35474         1.00          38       0.68  12.073676   
@@ -618,6 +796,20 @@
 4        1.00     50.194250         0.88        2.76           5  </code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>총 운항 수는 많은 수록 비행 편이 많을 것이고, dest_count는 경로 다양성(즉 도착지의 다양성)을 뜻하고, 많을 수록 넓은 네트워크를 가진 항공사임을 의미 평균 지연 시간은 적을 수록 지연 확률이 적다는 것을 의미할 것입니다. 또한 정시 운항 비율이 높을 수록 정시에 출발할 확률이 높을 것입니다.</p>
+<p>UA, DL, B6, EV, AA</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <p><br></p>
 <div class="fragment" style="display: flex; justify-content: flex-start;">
 <table class="caption-top">
@@ -652,7 +844,7 @@
 </section>
 <section id="항공사-분석---주말" class="slide level2">
 <h2>항공사 분석 - 주말</h2>
-<div id="3f145b14" class="cell" data-execution_count="11">
+<div id="7fa634ad" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>  carrier  weekend_flights  flight_norm  dest_count  dest_norm  avg_delay  \
 3      DL            19845         0.85          36       0.60   8.197528   
@@ -700,14 +892,42 @@
 </tbody>
 </table>
 </div>
+<aside class="notes">
+<p>DL, UA, B6, EV, AA</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="결론" class="slide level2">
 <h2>결론</h2>
+<aside class="notes">
+<p>결론적으로 모든 면에서 무난한 항공사를 고른다면, UA와 DL항공사를 추천할 것입니다. 하지만 만약 클라이언트의 니즈가 경로의 다양성에 맞춰진다면, EV항공사도 추가 할 수 있을 것입니다.</p>
+<p>하지만 지연 시간이 중요한 클라이언트에게 AA항공사를 추천하기에는 앞서 운항 수와 경로의 다양성이 부족하므로 해당 항공사에서 클라이언트의 도착지가 있는지 확인해봐야 할 것입니다.</p>
+<p>마지막으로 레이터 차트 코드를 설명드리고 마무리 하겠습니다.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">스택 막대 그래프</a></li><li><a href="#tabset-1-2">레이더 차트</a></li><li><a href="#tabset-1-3">레이더 차트 코드</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="12bb7859" class="cell" data-execution_count="12">
+<div id="fdfa817c" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -718,7 +938,7 @@
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="a3230b45" class="cell" data-execution_count="13">
+<div id="2b15e68f" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -809,8 +1029,8 @@
 <h2>조원 및 업무 분담</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
+<col style="width: 15%">
+<col style="width: 84%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -831,12 +1051,19 @@
 <td><strong>홍주형</strong></td>
 <td><ul>
 <li><strong>5대 항공사 데이터 분석</strong> : (주중/주말) 부문별 점수 산정 및 시각화</li>
+<li>발표</li>
 </ul></td>
 </tr>
 <tr class="even">
 <td><strong>한규민</strong></td>
 <td><ul>
 <li><strong>5대 항공사 데이터 분석</strong> : (주중/주말) 부문별 점수 산정 및 시각화</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td><strong>공통</strong></td>
+<td><ul>
+<li>코드 및 qmd 크로스체크</li>
 </ul></td>
 </tr>
 </tbody>
